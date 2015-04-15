@@ -1,0 +1,32 @@
+{
+  "name": "versionable-collections",
+  "version": "0.0.0",
+  "description": "Collection optimized for AngularJS 2 one-way bindings",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mgechev/versionable-collections.git"
+  },
+  "keywords": [
+    "angular",
+    "angularjs",
+    "collection",
+    "performance"
+  ],
+  "author": "Minko Gechev <mgechev@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mgechev/versionable-collections/issues"
+  },
+  "homepage": "https://github.com/mgechev/versionable-collections",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-jasmine": "^2.0.1"
+  }
+}

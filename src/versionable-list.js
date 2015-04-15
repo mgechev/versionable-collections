@@ -11,8 +11,17 @@ function defineMethod(obj, name, method) {
   });
 }
 
-function VersionableArray(arr) {
-  this._version = 0;
+function VersionableList(arr) {
+  var version = 0;
+  defineProperty(this, 'version', {
+    get: function () {
+      return version;
+    },
+    set: function (val) {
+      version = val;
+    },
+    enumerable: true
+  });
   defineProperty(this, 'data', {
     value: arr || [],
     enumerable: false
@@ -25,14 +34,22 @@ function VersionableArray(arr) {
   });
 }
 
-VersionableArray.prototype.toValue = function () {
+defineMethod(VersionableList.prototype, 'toValue', function () {
   return this.data.slice();
-};
+});
+
+defineMethod(VersionableList.prototype, 'updateVersion', function () {
+  this.version += 1;
+});
 
 'push pop shift unshift'.split(' ')
   .forEach(function (prop) {
-    defineMethod(VersionableArray.prototype, prop, function () {
+    defineMethod(VersionableList.prototype, prop, function () {
       this.data[prop].apply(this.data, arguments);
-      this._version += 1;
+      this.updateVersion();
     });
   });
+
+var exports = (typeof window !== 'undefined') ? window : module.exports;
+
+exports.VersionableList = VersionableList;
