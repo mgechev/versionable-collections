@@ -13,7 +13,7 @@ function defineMethod(obj, name, method) {
 
 function VersionableList(arr) {
   var version = 0;
-  defineProperty(this, 'version', {
+  defineProperty(this, '_version', {
     get: function () {
       return version;
     },
@@ -22,30 +22,30 @@ function VersionableList(arr) {
     },
     enumerable: true
   });
-  defineProperty(this, 'data', {
+  defineProperty(this, '_data', {
     value: arr || [],
     enumerable: false
   });
   defineProperty(this, 'length', {
     enumerable: false,
     get: function () {
-      return this.data.length;
+      return this._data.length;
     }
   });
 }
 
 defineMethod(VersionableList.prototype, 'toValue', function () {
-  return this.data.slice();
+  return this._data.slice();
 });
 
 defineMethod(VersionableList.prototype, 'updateVersion', function () {
-  this.version += 1;
+  this._version += 1;
 });
 
 'push pop shift unshift'.split(' ')
   .forEach(function (prop) {
     defineMethod(VersionableList.prototype, prop, function () {
-      this.data[prop].apply(this.data, arguments);
+      this._data[prop].apply(this._data, arguments);
       this.updateVersion();
     });
   });

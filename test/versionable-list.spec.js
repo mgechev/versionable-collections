@@ -11,7 +11,7 @@ describe('VersionableList', function () {
 
   it('should define a single enumerable property', function () {
     var props = new VersionableList();
-    expect(Object.keys(props)).toEqual(['version']);
+    expect(Object.keys(props)).toEqual(['_version']);
   });
 
   describe('mutation methods', function () {
@@ -23,39 +23,39 @@ describe('VersionableList', function () {
     });
 
     it('should define push method', function () {
-      var oldVersion = list.version;
+      var oldVersion = list._version;
       expect(list.push).toBeDefined();
       list.push(1);
-      expect(list.version).not.toBe(oldVersion);
+      expect(list._version).not.toBe(oldVersion);
       expect(list.length).toBe(1);
       expect(list.toValue()).toEqual([1]);
     });
 
     it('should define pop method', function () {
       list.push(1);
-      var oldVersion = list.version;
+      var oldVersion = list._version;
       expect(list.pop).toBeDefined();
       list.pop();
       expect(list.toValue()).toEqual([]);
       expect(list.length).toBe(0);
-      expect(list.version).not.toBe(oldVersion);
+      expect(list._version).not.toBe(oldVersion);
     });
 
     it('should define shift method', function () {
       list.push(1);
-      var oldVersion = list.version;
+      var oldVersion = list._version;
       expect(list.shift).toBeDefined();
       list.shift();
       expect(list.toValue()).toEqual([]);
       expect(list.length).toBe(0);
-      expect(list.version).not.toBe(oldVersion);
+      expect(list._version).not.toBe(oldVersion);
     });
 
     it('should unshift method', function () {
-      var oldVersion = list.version;
+      var oldVersion = list._version;
       expect(list.unshift).toBeDefined();
       list.unshift(1);
-      expect(list.version).not.toBe(oldVersion);
+      expect(list._version).not.toBe(oldVersion);
       expect(list.length).toBe(1);
       expect(list.toValue()).toEqual([1]);
     });
