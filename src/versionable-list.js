@@ -51,7 +51,7 @@ defineMethod(VersionableList.prototype, '_updateVersion', function () {
   this._version += 1;
 });
 
-'push pop shift unshift'.split(' ')
+'push pop shift unshift splice'.split(' ')
   .forEach(function (prop) {
     defineMethod(VersionableList.prototype, prop, function () {
       this._data[prop].apply(this._data, arguments);
@@ -65,6 +65,11 @@ defineMethod(VersionableList.prototype, '_updateVersion', function () {
       return new VersionableList(this._data[prop].apply(this._data, arguments));
     });
   });
+
+defineMethod(VersionableList.prototype, 'forEach', function () {
+  this._data.forEach.apply(this._data, arguments);
+  this._updateVersion();
+});
 
 var exports = (typeof window !== 'undefined') ? window : module.exports;
 

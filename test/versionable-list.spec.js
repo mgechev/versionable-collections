@@ -51,13 +51,33 @@ describe('VersionableList', function () {
       expect(list._version).not.toBe(oldVersion);
     });
 
-    it('should unshift method', function () {
+    it('should define unshift method', function () {
       var oldVersion = list._version;
       expect(list.unshift).toBeDefined();
       list.unshift(1);
       expect(list._version).not.toBe(oldVersion);
       expect(list.length).toBe(1);
       expect(list.toValue()).toEqual([1]);
+    });
+
+    it('should defibe a splice method', function () {
+      list.push(1, 2, 3, 4);
+      expect(list.length).toBe(4);
+      list.splice(1, 1);
+      expect(list.length).toBe(3);
+      expect(list.toValue()).toEqual([1, 3, 4]);
+    });
+
+    it('should define forEach method', function () {
+      list.push({});
+      list.push({});
+      var oldVersion = list._version;
+      list.forEach(function (current) {
+        current.foo = 'bar';
+      });
+      expect(oldVersion).not.toBe(list._version);
+      expect(list.toValue()[0].foo).toBe('bar');
+      expect(list.toValue()[1].foo).toBe('bar');
     });
   });
 
