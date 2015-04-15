@@ -11,8 +11,8 @@ The implementation is based on the research made here:
 
 # Roadmap
 
-- [x] Implement a List data structure.
-- [ ] Implement a Map data structure.
+- [x] Implement List data structure.
+- [ ] Implement Map data structure.
 - [ ] Integrate with AngularJS (define as services, through `factory`).
 - [ ] Create gulp build script (minification and concatenation) and externalize the utility methods.
 - [ ] Register as bower and npm modules.
