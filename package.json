@@ -1,7 +1,7 @@
 {
   "name": "versionable-collections",
   "version": "0.0.0",
-  "description": "Collection optimized for AngularJS 2 one-way bindings",
+  "description": "Collection optimized for AngularJS one-way bindings",
   "main": "index.js",
   "directories": {
     "test": "test"
