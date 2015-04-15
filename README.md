@@ -1,5 +1,7 @@
 # Introduction
 
+![Optimize the memory usage](http://blog.mgechev.com/images/one-does-not-simply-optimize-the-dirty-checking-algorithm.png)
+
 This repository contains a set of data structures optimized for AngularJS 1.x one-way data binding.
 
 The implementation is based on the research made here:
