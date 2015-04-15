@@ -60,4 +60,25 @@ describe('VersionableList', function () {
       expect(list.toValue()).toEqual([1]);
     });
   });
+
+  describe('high-order functions', function () {
+    it('should define a map method', function () {
+      var list = new VersionableList([1, 2, 3, 4]);
+      expect(list.map).toBeDefined();
+      var newList = list.map(function (current) {
+        return current + 1;
+      });
+      expect(newList.toValue()).toEqual([2, 3, 4, 5]);
+    });
+
+    it('should define a filter method', function () {
+      var list = new VersionableList([1, 2, 3, 4]);
+      expect(list.filter).toBeDefined();
+      var newList = list.filter(function (current) {
+        return !!(current % 2);
+      });
+      expect(newList.toValue()).toEqual([1, 3]);
+
+    });
+  });
 });
