@@ -98,7 +98,27 @@ describe('VersionableList', function () {
         return !!(current % 2);
       });
       expect(newList.toValue()).toEqual([1, 3]);
+    });
 
+    it('should define reduce method', function () {
+      var list = new VersionableList([1, 2, 3]);
+      expect(list.reduce(function (o, c) {
+        return o + c;
+      }, 0)).toBe(6);
+    });
+
+    it('should define every method', function () {
+      var list = new VersionableList([1, 2, 3]);
+      expect(list.every(function (c) {
+        return typeof c === 'number';
+      })).toBeTruthy();
+    });
+
+    it('should define reduceRight method', function () {
+      var list = new VersionableList([1, 2]);
+      expect(list.reduceRight(function (p, c) {
+        return c / p;
+      }, 1)).toBe(0.5);
     });
   });
 });

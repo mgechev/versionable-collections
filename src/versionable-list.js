@@ -66,6 +66,13 @@ defineMethod(VersionableList.prototype, '_updateVersion', function () {
     });
   });
 
+'reduce every reduceRight'.split(' ')
+  .forEach(function (prop) {
+    defineMethod(VersionableList.prototype, prop, function () {
+      return this._data[prop].apply(this._data, arguments);
+    });
+  });
+
 defineMethod(VersionableList.prototype, 'forEach', function () {
   this._data.forEach.apply(this._data, arguments);
   this._updateVersion();
