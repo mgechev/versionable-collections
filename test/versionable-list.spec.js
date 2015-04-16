@@ -121,4 +121,16 @@ describe('VersionableList', function () {
       }, 1)).toBe(0.5);
     });
   });
+
+  describe('creation methods', function () {
+    it('should define concat method', function () {
+      var list = new VersionableList([1, 2]);
+      expect(list.concat).toBeDefined();
+      var otherList = new VersionableList([3, 4]);
+      var result = list.concat(otherList);
+      expect(result instanceof VersionableList).toBeTruthy();
+      expect(result.length).toBe(4);
+      expect(result.toValue()).toEqual([1, 2, 3, 4]);
+    });
+  });
 });

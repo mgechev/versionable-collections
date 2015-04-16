@@ -78,6 +78,10 @@ defineMethod(VersionableList.prototype, 'forEach', function () {
   this._updateVersion();
 });
 
+defineMethod(VersionableList.prototype, 'concat', function (otherList) {
+  return new VersionableList(this._data.concat(otherList._data));
+});
+
 var exports = (typeof window !== 'undefined') ? window : module.exports;
 
 exports.VersionableList = VersionableList;
