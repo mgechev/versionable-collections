@@ -2,9 +2,8 @@
 
 (function () {
   'use strict';
-  var module = angular.module('VersionableCollection', []);
-
-  module.factory('VersionableList', function () {
-    return VersionableList;
-  });
+  angular.module('VersionableCollection', [])
+    .factory('VersionableList', function () {
+      return VersionableList;
+    });
 }());
