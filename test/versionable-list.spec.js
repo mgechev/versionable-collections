@@ -152,5 +152,16 @@ describe('VersionableList', function () {
       expect(list.lastIndexOf(4)).toBe(-1);
       expect(list.lastIndexOf(0)).toBe(-1);
     });
+
+    it('should define a sort method', function () {
+      var list = new VersionableList([2, 11, 3]);
+      expect(list.sort).toBeDefined();
+      var lexSort = list.sort();
+      expect(lexSort.toValue()).toEqual([11, 2, 3]);
+      var sorted = list.sort(function (a, b) {
+        return a - b;
+      });
+      expect(sorted.toValue()).toEqual([2, 3, 11]);
+    });
   });
 });

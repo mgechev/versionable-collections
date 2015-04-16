@@ -89,6 +89,10 @@ defineMethod(VersionableList.prototype, 'concat', function (otherList) {
     });
   });
 
+defineMethod(VersionableList.prototype, 'sort', function () {
+  return new VersionableList(this._data.sort.apply(this._data, arguments));
+});
+
 var exports = (typeof window !== 'undefined') ? window : module.exports;
 
 exports.VersionableList = VersionableList;
