@@ -82,9 +82,12 @@ defineMethod(VersionableList.prototype, 'concat', function (otherList) {
   return new VersionableList(this._data.concat(otherList._data));
 });
 
-defineMethod(VersionableList.prototype, 'indexOf', function () {
-  return this._data.indexOf.apply(this._data, arguments);
-});
+'indexOf lastIndexOf'.split(' ')
+  .forEach(function (prop) {
+    defineMethod(VersionableList.prototype, prop, function () {
+      return this._data[prop].apply(this._data, arguments);
+    });
+  });
 
 var exports = (typeof window !== 'undefined') ? window : module.exports;
 

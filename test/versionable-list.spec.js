@@ -134,13 +134,23 @@ describe('VersionableList', function () {
     });
 
     it('should define indexOf method', function () {
-      var list = new VersionableList([1, 2, 3]);
+      var list = new VersionableList([1, 2, 2, 3]);
       expect(list.indexOf).toBeDefined();
       expect(list.indexOf(1)).toBe(0);
       expect(list.indexOf(2)).toBe(1);
-      expect(list.indexOf(3)).toBe(2);
+      expect(list.indexOf(3)).toBe(3);
       expect(list.indexOf(4)).toBe(-1);
       expect(list.indexOf(0)).toBe(-1);
+    });
+
+    it('should define lastIndexOf method', function () {
+      var list = new VersionableList([1, 2, 2, 3]);
+      expect(list.lastIndexOf).toBeDefined();
+      expect(list.lastIndexOf(1)).toBe(0);
+      expect(list.lastIndexOf(2)).toBe(2);
+      expect(list.lastIndexOf(3)).toBe(3);
+      expect(list.lastIndexOf(4)).toBe(-1);
+      expect(list.lastIndexOf(0)).toBe(-1);
     });
   });
 });
