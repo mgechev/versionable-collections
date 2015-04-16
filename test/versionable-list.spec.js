@@ -122,7 +122,7 @@ describe('VersionableList', function () {
     });
   });
 
-  describe('creation methods', function () {
+  describe('other methods', function () {
     it('should define concat method', function () {
       var list = new VersionableList([1, 2]);
       expect(list.concat).toBeDefined();
@@ -131,6 +131,16 @@ describe('VersionableList', function () {
       expect(result instanceof VersionableList).toBeTruthy();
       expect(result.length).toBe(4);
       expect(result.toValue()).toEqual([1, 2, 3, 4]);
+    });
+
+    it('should define indexOf method', function () {
+      var list = new VersionableList([1, 2, 3]);
+      expect(list.indexOf).toBeDefined();
+      expect(list.indexOf(1)).toBe(0);
+      expect(list.indexOf(2)).toBe(1);
+      expect(list.indexOf(3)).toBe(2);
+      expect(list.indexOf(4)).toBe(-1);
+      expect(list.indexOf(0)).toBe(-1);
     });
   });
 });
