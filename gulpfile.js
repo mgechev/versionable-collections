@@ -38,3 +38,31 @@ gulp.task('build', ['concat'], function () {
   .pipe(rename('versionable-collections.min.js'))
   .pipe(gulp.dest('./dist/'));
 });
+
+gulp.task('concat:angular', function () {
+  'use strict';
+  return gulp
+    .src([
+      './src/utils.js',
+      './src/versionable-list.js',
+      './src/versionable-collections.angular.js'
+    ])
+    .pipe(concat('versionable-collections.angular.js'))
+    .pipe(replace(/('|")use strict('|");?/g, ''))
+    .pipe(wrap({ src: './template.tpl' }, {
+      exports: ''
+    }, {
+      variable: 'data'
+    }))
+    .pipe(gulp.dest('./dist/'));
+});
+
+gulp.task('build:angular', ['concat:angular'], function () {
+  'use strict';
+  return gulp.src(
+    './dist/versionable-collections.angular.js'
+  )
+  .pipe(uglify())
+  .pipe(rename('versionable-collections.angular.min.js'))
+  .pipe(gulp.dest('./dist/'));
+});
