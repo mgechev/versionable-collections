@@ -1,13 +1,5 @@
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define([], factory);
-  } else if (typeof exports === 'object') {
-    module.exports = factory();
-  } else {
-    root.VersionableList = factory();
-  }
-}(this, function() {
-/* exported defineMethod */
+(function (exports) {
+  /* exported defineMethod */
 'use strict';
 
 function defineProperty(obj, name, descriptor) {
@@ -106,5 +98,5 @@ defineMethod(VersionableList.prototype, 'sort', function () {
   return new VersionableList(this._data.sort.apply(this._data, arguments));
 });
 
-return VersionableList;
-}));
+  exports.VersionableList = VersionableList;
+}(typeof window === 'undefined' ? module.exports : window));

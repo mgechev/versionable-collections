@@ -1,11 +1,11 @@
 var gulp = require('gulp');
 var jasmine = require('gulp-jasmine');
 var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
+var uglify = require('gulp-uglifyjs');
 var rename = require('gulp-rename');
-var umd = require('gulp-umd');
+var wrap = require('gulp-wrap');
 
-gulp.task('test', function () {
+gulp.task('test', ['concat'], function () {
   'use strict';
   return gulp.src('./test/*.spec.js')
     .pipe(jasmine());
@@ -19,13 +19,10 @@ gulp.task('concat', function () {
       './src/versionable-list.js'
     ])
     .pipe(concat('versionable-collections.js'))
-    .pipe(umd({
-      exports: function () {
-        return 'VersionableList';
-      },
-      namespace: function () {
-        return 'VersionableList';
-      }
+    .pipe(wrap({ src: './template.tpl' }, {
+      exports: 'exports.VersionableList = VersionableList;'
+    }, {
+      variable: 'data'
     }))
     .pipe(gulp.dest('./dist/'));
 });

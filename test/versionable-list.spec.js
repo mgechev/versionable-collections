@@ -1,6 +1,6 @@
 /* global it, describe, expect, beforeEach */
 var VersionableList =
-  require('../src/versionable-list').VersionableList;
+  require('../dist/versionable-collections').VersionableList;
 
 describe('VersionableList', function () {
   'use strict';
