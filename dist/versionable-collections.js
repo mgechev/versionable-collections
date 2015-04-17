@@ -21,38 +21,6 @@ function defineMethod(obj, name, method) {
   });
 }
 
-return VersionableList;
-}));
-
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define([], factory);
-  } else if (typeof exports === 'object') {
-    module.exports = factory();
-  } else {
-    root.VersionableList = factory();
-  }
-}(this, function() {
-/* global angular, VersionableList */
-
-'use strict';
-angular.module('VersionableCollection', [])
-  .factory('VersionableList', function () {
-    return VersionableList;
-  });
-
-return VersionableList;
-}));
-
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define([], factory);
-  } else if (typeof exports === 'object') {
-    module.exports = factory();
-  } else {
-    root.VersionableList = factory();
-  }
-}(this, function() {
 /* global defineProperty, defineMethod */
 'use strict';
 
@@ -137,10 +105,6 @@ defineMethod(VersionableList.prototype, 'concat', function (otherList) {
 defineMethod(VersionableList.prototype, 'sort', function () {
   return new VersionableList(this._data.sort.apply(this._data, arguments));
 });
-
-var exports = (typeof window !== 'undefined') ? window : module.exports;
-
-exports.VersionableList = VersionableList;
 
 return VersionableList;
 }));

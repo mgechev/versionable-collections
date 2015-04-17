@@ -16,8 +16,9 @@ gulp.task('concat', function () {
   return gulp
     .src([
       './src/utils.js',
-      './src/**/*.js'
+      './src/versionable-list.js'
     ])
+    .pipe(concat('versionable-collections.js'))
     .pipe(umd({
       exports: function () {
         return 'VersionableList';
@@ -26,7 +27,6 @@ gulp.task('concat', function () {
         return 'VersionableList';
       }
     }))
-    .pipe(concat('versionable-collections.js'))
     .pipe(gulp.dest('./dist/'));
 });
 
