@@ -1,6 +1,7 @@
 (function (exports) {
+  'use strict';
   /* exported defineMethod */
-'use strict';
+
 
 function defineProperty(obj, name, descriptor) {
   Object.defineProperty(obj, name, descriptor);
@@ -14,7 +15,7 @@ function defineMethod(obj, name, method) {
 }
 
 /* global defineProperty, defineMethod */
-'use strict';
+
 
 function VersionableList(arr) {
   var version = 0;
