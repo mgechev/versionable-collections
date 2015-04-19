@@ -16,8 +16,8 @@ gulp.task('concat', function () {
   'use strict';
   return gulp
     .src([
-      './src/utils.js',
-      './src/versionable-list.js'
+      './lib/utils.js',
+      './lib/versionable-list.js'
     ])
     .pipe(concat('versionable-collections.js'))
     .pipe(replace(/('|")use strict('|");?/g, ''))
@@ -43,9 +43,9 @@ gulp.task('concat:angular', function () {
   'use strict';
   return gulp
     .src([
-      './src/utils.js',
-      './src/versionable-list.js',
-      './src/versionable-collections.angular.js'
+      './lib/utils.js',
+      './lib/versionable-list.js',
+      './lib/versionable-collections.angular.js'
     ])
     .pipe(concat('versionable-collections.angular.js'))
     .pipe(replace(/('|")use strict('|");?/g, ''))
