@@ -17,6 +17,7 @@ gulp.task('concat', function () {
   return gulp
     .src([
       './lib/utils.js',
+      './lib/versionable-collection.js',
       './lib/versionable-list.js'
     ])
     .pipe(concat('versionable-collections.js'))
@@ -44,6 +45,7 @@ gulp.task('concat:angular', function () {
   return gulp
     .src([
       './lib/utils.js',
+      './lib/versionable-collection.js',
       './lib/versionable-list.js',
       './lib/versionable-collections.angular.js'
     ])

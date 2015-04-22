@@ -17,17 +17,23 @@ function defineMethod(obj, name, method) {
 /* global defineProperty, defineMethod */
 
 
-function VersionableList(arr) {
-  var version = 0;
+function VersionableCollection() {
   defineProperty(this, '_version', {
-    get: function () {
-      return version;
-    },
-    set: function (val) {
-      version = val;
-    },
-    enumerable: true
+    value: 0,
+    enumerable: true,
+    writable: true
   });
+}
+
+defineMethod(VersionableCollection.prototype, '_updateVersion', function () {
+  this._version += 1;
+});
+
+/* global defineProperty, defineMethod, VersionableCollection */
+
+
+function VersionableList(arr) {
+  VersionableCollection.call(this);
   defineProperty(this, '_data', {
     value: arr || [],
     enumerable: false
@@ -40,6 +46,8 @@ function VersionableList(arr) {
   });
 }
 
+VersionableList.prototype = Object.create(VersionableCollection.prototype);
+
 // The direct access to the data property is not allowed
 // we don't want the user to change the data without any updates
 // of the collection's version.
@@ -51,10 +59,6 @@ function VersionableList(arr) {
  */
 defineMethod(VersionableList.prototype, 'toValue', function () {
   return this._data.slice();
-});
-
-defineMethod(VersionableList.prototype, '_updateVersion', function () {
-  this._version += 1;
 });
 
 'push pop shift unshift splice'.split(' ')
