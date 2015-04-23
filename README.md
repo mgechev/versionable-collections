@@ -13,8 +13,8 @@ The implementation is based on the research made here:
 
 - [x] Implement List data structure.
 - [x] Create gulp build script (minification and concatenation) and externalize the utility methods.
-- [ ] Implement Map data structure.
-- [ ] Integrate with AngularJS (define as services, through `factory`).
+- [x] Implement Map data structure.
+- [x] Integrate with AngularJS (define as services, through `factory`).
 - [ ] Register as bower and npm module.
 - [ ] Make further benchmarks in order to verify whether the `VersionableList` will has better performance if it is evaluated by AngularJS as array like (no need to call `hasOwnProperty` on `_version`).
 
