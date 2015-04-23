@@ -54,5 +54,14 @@ describe('VersionableMap', function () {
         map.remove('foo');
         expect(map._version).toBe(oldVersion);
       });
+
+    it('should define method keys which returns all keys of the collection',
+      function () {
+        map.set('key0', 1);
+        map.set('key1', 1);
+        var keys = map.keys();
+        expect(keys.indexOf('key0') >= 0).toBeTruthy();
+        expect(keys.indexOf('key1') >= 0).toBeTruthy();
+      });
   });
 });

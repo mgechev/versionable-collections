@@ -134,6 +134,10 @@ defineMethod(VersionableMap.prototype, 'remove', function (key) {
   return value;
 });
 
+defineMethod(VersionableMap.prototype, 'keys', function () {
+  return Object.keys(this._data);
+});
+
   exports.VersionableList = VersionableList;
 exports.VersionableMap = VersionableMap;
 }(typeof window === 'undefined' ? module.exports : window));
