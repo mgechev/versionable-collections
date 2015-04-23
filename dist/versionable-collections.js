@@ -103,5 +103,35 @@ defineMethod(VersionableList.prototype, 'sort', function () {
   return new VersionableList(this._data.sort.apply(this._data, arguments));
 });
 
+/* global defineProperty, defineMethod, VersionableCollection */
+
+
+function VersionableMap(data) {
+  VersionableCollection.call(this);
+  defineProperty(this, '_data', {
+    value: data || {},
+    enumerable: false
+  });
+}
+
+VersionableMap.prototype = Object.create(VersionableCollection.prototype);
+
+defineMethod(VersionableMap.prototype, 'set', function (key, value) {
+  this._data[key] = value;
+  this._updateVersion();
+});
+
+defineMethod(VersionableMap.prototype, 'get', function (key) {
+  return this._data[key];
+});
+
+defineMethod(VersionableMap.prototype, 'remove', function (key) {
+  var value = this._data[key];
+  delete this._data[key];
+  this._updateVersion();
+  return value;
+});
+
   exports.VersionableList = VersionableList;
+exports.VersionableMap = VersionableMap;
 }(typeof window === 'undefined' ? module.exports : window));

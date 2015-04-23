@@ -18,12 +18,14 @@ gulp.task('concat', function () {
     .src([
       './lib/utils.js',
       './lib/versionable-collection.js',
-      './lib/versionable-list.js'
+      './lib/versionable-list.js',
+      './lib/versionable-map.js'
     ])
     .pipe(concat('versionable-collections.js'))
     .pipe(replace(/('|")use strict('|");?/g, ''))
     .pipe(wrap({ src: './template.tpl' }, {
-      exports: 'exports.VersionableList = VersionableList;'
+      exports: 'exports.VersionableList = VersionableList;\n' +
+               'exports.VersionableMap = VersionableMap;'
     }, {
       variable: 'data'
     }))
