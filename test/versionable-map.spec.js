@@ -1,4 +1,4 @@
-/* global it, describe, expect */
+/* global it, describe, expect, beforeEach */
 var VersionableMap =
   require('../dist/versionable-collections').VersionableMap;
 
@@ -19,4 +19,40 @@ describe('VersionableMap', function () {
       var map = new VersionableMap();
       expect(Object.keys(map)).toEqual(['_version']);
     });
+
+  describe('methods', function () {
+    var map;
+    beforeEach(function () {
+      map = new VersionableMap();
+    });
+
+    it('should define set method which changes the version', function () {
+      var oldVersion = map._version;
+      map.set('key', 'value');
+      expect(oldVersion).not.toBe(map._version);
+    });
+
+    it('should define a get method which doesn\'t change the version',
+      function () {
+        map.set('foo', 'bar');
+        var oldVersion = map._version;
+        expect(map.get('foo')).toBe('bar');
+        expect(map._version).toBe(oldVersion);
+      });
+
+    it('should define a remove method, which changes the' +
+      'version, when the key is removed', function () {
+        map.set('foo', 'bar');
+        var oldVersion = map._version;
+        map.remove('foo');
+        expect(map._version).not.toBe(oldVersion);
+      });
+
+    it('should define a remove method, which does not' +
+       'change the version, when the key doesn\'t exists', function () {
+        var oldVersion = map._version;
+        map.remove('foo');
+        expect(map._version).toBe(oldVersion);
+      });
+  });
 });
