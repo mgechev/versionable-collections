@@ -103,6 +103,41 @@ defineMethod(VersionableList.prototype, 'sort', function () {
   return new VersionableList(this._data.sort.apply(this._data, arguments));
 });
 
+/* global defineProperty, defineMethod, VersionableCollection */
+
+
+function VersionableMap(data) {
+  VersionableCollection.call(this);
+  defineProperty(this, '_data', {
+    value: data || {},
+    enumerable: false
+  });
+}
+
+VersionableMap.prototype = Object.create(VersionableCollection.prototype);
+
+defineMethod(VersionableMap.prototype, 'set', function (key, value) {
+  this._data[key] = value;
+  this._updateVersion();
+});
+
+defineMethod(VersionableMap.prototype, 'get', function (key) {
+  return this._data[key];
+});
+
+defineMethod(VersionableMap.prototype, 'remove', function (key) {
+  var value = this._data[key];
+  if (this._data[key] !== undefined) {
+    delete this._data[key];
+    this._updateVersion();
+  }
+  return value;
+});
+
+defineMethod(VersionableMap.prototype, 'keys', function () {
+  return Object.keys(this._data);
+});
+
 /* global angular, VersionableList */
 
 

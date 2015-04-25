@@ -49,6 +49,7 @@ gulp.task('concat:angular', function () {
       './lib/utils.js',
       './lib/versionable-collection.js',
       './lib/versionable-list.js',
+      './lib/versionable-map.js',
       './lib/versionable-collections.angular.js'
     ])
     .pipe(concat('versionable-collections.angular.js'))
