@@ -138,12 +138,15 @@ defineMethod(VersionableMap.prototype, 'keys', function () {
   return Object.keys(this._data);
 });
 
-/* global angular, VersionableList */
+/* global angular, VersionableList, VersionableMap */
 
 
-angular.module('VersionableCollection', [])
+angular.module('VersionableCollections', [])
   .factory('VersionableList', function () {
     return VersionableList;
+  })
+  .factory('VersionableMap', function () {
+    return VersionableMap;
   });
 
   
