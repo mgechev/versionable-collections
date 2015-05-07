@@ -8,6 +8,7 @@ The implementation is based on the research made here:
 
 1. [Boost the Performance of an AngularJS Application Using Immutable Data](http://blog.mgechev.com/2015/03/02/immutability-in-angularjs-immutablejs/)
 2. [Boost the Performance of an AngularJS Application Using Immutable Data - Part 2](http://blog.mgechev.com/2015/04/11/immutability-in-angularjs-immutablejs-part-2/)
+3. [Even Faster AngularJS Data Structures](http://blog.mgechev.com/2015/04/20/fast-angular-data-structures-versionable/)
 
 # Roadmap
 
